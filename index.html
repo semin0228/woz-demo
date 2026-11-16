@@ -1,0 +1,33 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>STEVE OFFICE · 작동 시연</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<style>
+body{margin:0;font-family:Pretendard,-apple-system,sans-serif;background:#0f1115;color:#e8eaed}
+header{padding:14px 18px;border-bottom:1px solid #262a33;font-weight:700}header small{color:#8a93a3;font-weight:400;margin-left:8px}
+#box{max-width:720px;margin:0 auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.m{max-width:84%;padding:10px 14px;border-radius:18px;line-height:1.5;font-size:15px;white-space:pre-wrap;animation:in .3s}
+.u{align-self:flex-end;background:#0a84ff}.w{align-self:flex-start;background:#2c2c2e}.j{align-self:flex-start;background:#3a2f1f}
+.n{font-size:12px;color:#8a93a3;margin:0 6px -4px}.nu{align-self:flex-end}
+.dots{align-self:flex-start;color:#8a93a3;font-size:13px}
+footer{text-align:center;color:#6c7586;font-size:12px;padding:18px}
+button{background:#262a33;color:#e8eaed;border:0;border-radius:10px;padding:8px 14px;margin:6px;cursor:pointer}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+</style>
+<header>STEVE OFFICE <small>회의실 작동 시연 · 예시 대화입니다(실제 기록 아님, 로그인 없음)</small></header>
+<div id="box"></div>
+<footer><button onclick="run()">처음부터 다시 보기</button><br>워즈가 일하고 잡스가 검증하는 흐름을 예시로 보여 줍니다.</footer>
+<script>
+const S=[
+["u","프로님","이 영상 보관함에 넣어 줘"],
+["w","워즈","보관함 '안 본 것'에 넣었습니다. 제목·주소·캡처를 한 줄로 적었습니다."],
+["j","잡스","검증: 보관함 파일에 주소가 실제로 들어 있는지 확인했습니다. 통과."],
+["u","프로님","이번 주 일정 충돌 있나?"],
+["w","워즈","일정을 조회했습니다. 목요일 14시에 두 건이 겹칩니다. 앞 건을 30분 당기는 안을 추천합니다. 보내기 전에 승인해 주세요."],
+["j","잡스","날짜·시간 숫자를 원본 일정과 대조했습니다. 지적 0건."],
+["w","워즈","요약: 프로님이 할 일 1건(승인), 워즈 한 일 2건, 잡스 한 일 1건."]];
+let t=[];
+function run(){t.forEach(clearTimeout);t=[];const b=document.getElementById('box');b.innerHTML='';
+S.forEach((s,i)=>{t.push(setTimeout(()=>{const n=document.createElement('div');n.className='n'+(s[0]=='u'?' nu':'');n.textContent=s[1];
+const m=document.createElement('div');m.className='m '+s[0];m.textContent=s[2];b.append(n,m);scrollTo(0,document.body.scrollHeight)},i*1800+400))})}
+run();
+</script></html>
